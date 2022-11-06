@@ -1,6 +1,8 @@
 pipeline {
     agent any
     parameters {
+        string defaultValue: 'Pramodr677', name: 'username'
+        password defaultValue: '', name: 'password'
         string defaultValue: 'ami-08c40ec9ead489470', description: 'Input amazon image id', name: 'AMI'
         string defaultValue: 't2.medium', description: 'Input instance type', name: 'instance_type'
         string defaultValue: 'mumbai', description: 'Input key pair name which you want to provide to your machine & ensure it will be pre-generated', name: 'key_name'
@@ -60,7 +62,7 @@ pipeline {
                 IP=$(terraform output -json Bastion-publicIP | jq -s -r '.[]') 
                 echo $IP
                 ssh -i "~/$Key_pair_name" -o StrictHostKeyChecking=no -tt $VM_USER@$IP "rm -rf testingrole"
-                ssh -i "~/$Key_pair_name" -o StrictHostKeyChecking=no -tt $VM_USER@$IP "git clone https://github.com/Pramodr677/testingrole.git"
+                ssh -i "~/$Key_pair_name" -o StrictHostKeyChecking=no -tt $VM_USER@$IP "git clone https://${username}:${password}@github.com/Pramodr677/testingrole.git"
                 '''
             }
         }
