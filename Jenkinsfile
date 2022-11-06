@@ -71,7 +71,7 @@ pipeline {
                 sh'''
                 IP=$(terraform output -json Bastion-publicIP | jq -s -r '.[]') 
                 echo $IP
-                ssh -i "~/$Key_pair_name" -o StrictHostKeyChecking=no -tt $VM_USER@$IP "ansible-playbook -e version=${version} -i Invnetory ~/testingrole/frontplay.yml"
+                ssh -i "~/$Key_pair_name" -o StrictHostKeyChecking=no -tt $VM_USER@$IP "ansible-playbook -e version=${version} -i Invnetory ~/testingrole/nginxtool/frontplay.yml"
                 '''
             }
         }
