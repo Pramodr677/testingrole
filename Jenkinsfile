@@ -66,7 +66,7 @@ pipeline {
                 '''
             }
         }
-        stage('Cluster setup'){
+        stage('nginx configure'){
             steps {
                 sh'''
                 IP=$(terraform output -json Bastion-publicIP | jq -s -r '.[]') 
