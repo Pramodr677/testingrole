@@ -1,0 +1,58 @@
+#---
+# plugin: aws_ec2
+# regions:
+#   - us-east-2
+
+# filters:
+#   tag:env:
+#     - ubuntu
+#     - redhat
+
+#   instance-state-name : running
+# compose:
+#   ansible_host: public_ip_address
+
+# groups:
+#   ubuntu: '"ubuntu" in tags.env'
+# #   redhat: '"redhat" in tags.env'
+
+# plugin: aws_ec2
+# regions:
+#   - ap-south-1
+
+# filters:
+#   tag:Name:
+#     - public-instance
+#     - private-instance
+
+#   instance-state-name : running
+# compose:
+#   ansible_host: public_ip_address
+
+# groups:
+#   ubuntu: '"public-instance" in tags.Name'
+#   redhat: '"private-instance" in tags.Name'
+
+
+
+node1 ansible_host=3.236.127.214 ansible_user=ubuntu ansible_ssh_private_key_file=/home/kc/Downloads/mumbai.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+[app]
+node2 ansible_host=10.0.190.57 ansible_user=ubuntu ansible_ssh_private_key_file=/home/kc/Downloads/mumbai.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+node3 ansible_host=10.0.142.245 ansible_user=ubuntu ansible_ssh_private_key_file=/home/kc/Downloads/mumbai.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+[redhat]
+
+host4 ansible_host=13.233.40.54 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/home/kc/Downloads/mumbai1.pem
+
+host5 ansible_host=10.0.13.90 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/home/kc/Downloads/mumbai1.pem  
+
+host6 ansible_host=10.0.13.147 ansible_ssh_user=ec2-user ansible_ssh_private_key_file=/home/kc/Downloads/mumbai1.pem
+
+
+
+
+#node1 ansible_host=54.243.6.187 ansible_ssh_user=ubuntu ansible_ssh_pass=123456 ansible_connection=ssh
+#ubuntu20 ansible_host=3.88.159.94 ansible_ssh_user=ubuntu ansible_ssh_key=/home/kc/Downloads/assi0309.pem ansible_connection=ssh
+#ubuntu ansible_host=13.234.238.194 ansible_ssh_user=ubuntu ansible_ssh_key=/home/kc/.ssh/mumbai.pem  ansible_connection=ssh
+#redhat ansible_host=54.198.146.164 ansible_ssh_user=ec2-user ansible_ssh_key=/home/kc/Downloads/assi0309.pem ansible_connection=ssh

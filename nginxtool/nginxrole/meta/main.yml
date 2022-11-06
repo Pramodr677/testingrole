@@ -1,0 +1,43 @@
+#galaxy_info:
+ 
+#  author: "Pramod Rajput"
+ # company: opstree
+  
+# ansible version 
+ # min_ansible_version: 2.1
+
+#dependencies:  "install Following packages before complie nginx package from source code as per required OS"
+           #- zlib-devel
+           #- pcre-devel
+            #- openssl-devel
+           #- perl
+           #- perl-devel
+           #- perl-ExtUtils-Embed
+           #- gzip
+           #- libxslt
+           #- libxslt-devel
+           #- libxml2
+           #- libxml2-devel
+           #- gd
+           #- gd-devel
+           #- wget
+
+#Modules used to compile Package:
+ #             Please refere below Official Blog of Nginx "https://nginx.org/en/docs/configure.html"
+
+
+#platforms: 
+   
+ #   name: ubuntu
+  #  versions: 
+   #   - "16 (all)"
+   #   - "18 (all)"
+   #   - "20 (all)"
+   #   - "22 (all)"
+  
+   # name: Redhat
+   # versions:
+   #   - "16 (all)"
+   #   - "18 (all)"
+   #   - "20 (all)"
+   #   - "22 (all)"

@@ -1,0 +1,112 @@
+---
+
+    - name: install Dependancy
+      ansible.builtin.yum:
+         name: "{{ item }}"
+         state: present
+      loop:   
+           - "@Development tools"
+           - zlib-devel
+           - pcre-devel 
+           - openssl-devel
+           - perl
+           - perl-devel
+           - perl-ExtUtils-Embed 
+           - libxslt
+           - libxslt-devel
+           - libxml2
+           - libxml2-devel
+           - gd
+           - gd-devel
+           - wget
+         
+    - name: Download/unzip nginx
+      ansible.builtin.unarchive:
+         src: https://nginx.org/download/{{ nginx_default_release }}.tar.gz 
+         dest: /opt
+         remote_src: yes
+
+    - name: Configure connection Path/Module
+      ansible.builtin.shell:  sudo ./configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=root --group=root
+      args:
+         chdir: /opt/{{ nginx_default_release }}
+  
+    - name: make comand
+      ansible.builtin.shell: sudo make
+      args:
+         chdir: /opt/{{ nginx_default_release }}
+
+    - name: install make comand
+      ansible.builtin.shell: sudo make install
+      args:
+         chdir: /opt/{{ nginx_default_release }}
+
+    - name: Copy nginx servicefile in place
+      ansible.builtin.template:
+         src: service_file.j2
+         dest: /lib/systemd/system/nginx.service   
+         owner: root
+         group: root   
+    
+    - name: start service nginx
+      ansible.builtin.service:
+         name: nginx
+         state: started
+
+   
+###########################################################
+
+    - name: Copy nginx configuration in place.
+      ansible.builtin.template:
+        src: nginx_conf.j2
+        dest: /etc/nginx/conf/nginx.conf
+        owner: root
+        group: root
+        mode: 0644
+      when: inventory_hostname=="node1"    
+      notify:
+       - reload nginx
+###################################################
+
+    - name: Copy nginx configuration in place.
+      ansible.builtin.template:
+        src: nginx_conf1.j2
+        dest: /etc/nginx/conf/nginx.conf
+        owner: root
+        group: root
+        mode: 0644
+      when: inventory_hostname=="node2"  
+      notify:
+       - reload nginx
+# ############################################
+
+    - name: Copy nginx configuration in place.
+      ansible.builtin.template:
+        src: nginx_conf2.j2
+        dest: /etc/nginx/conf/nginx.conf
+        owner: root
+        group: root
+        mode: 0644
+      when: inventory_hostname=="node3"  
+      notify:
+       - reload nginx
+
+# #################################################
+
+
+    - name: Copy nginx index.html in place.
+      ansible.builtin.template:
+        src: index.html.j2
+        dest: /etc/nginx/html/index.html
+        owner: root
+        group: root
+      when: inventory_hostname=="node2"
+
+    - name: Copy nginx index.html in place.
+      ansible.builtin.template:
+        src: index.httml.j2
+        dest: /etc/nginx/html/index.html
+        owner: root
+        group: root
+      when: inventory_hostname=="node3"    
+

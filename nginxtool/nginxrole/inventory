@@ -1,0 +1,4 @@
+
+
+data ansible_host=54.197.203.91 ansible_ssh_user=ubuntu ansible_ssh_key=/home/kc/Downloads/assi0309.pem ansible_connection=ssh
+redhatrole ansible_host=34.229.6.66 ansible_ssh_user=ec2-user ansible_ssh_key=/home/kc/Downloads/assi0309.pem ansible_connection=ssh
