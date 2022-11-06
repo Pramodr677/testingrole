@@ -82,7 +82,7 @@ upstream app {
      #server {{ reverseproxy_servername2 }};    
 
   server {% for i in groups['app'] %}
-IP{{ loop.index0 }}={{ hostvars[i]['ansible_default_ipv4']['address'] }}
+{{ hostvars[i]['ansible_default_ipv4']['address'] }}
 {% endfor %};
 
     
