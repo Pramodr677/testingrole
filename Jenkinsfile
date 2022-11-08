@@ -58,6 +58,7 @@ pipeline {
                 '''
             }
         }
+        }
         stage('Copy data'){
             when {
                 expression { params.Infrastruture == 'Apply' }
