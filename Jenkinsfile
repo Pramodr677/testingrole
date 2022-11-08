@@ -48,8 +48,7 @@ pipeline {
             }
         }
         stage('terraform output'){
-
-            when {
+           when {
                 expression { params.Infrastruture == 'Apply' }
             }
             steps {
