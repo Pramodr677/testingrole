@@ -1,6 +1,8 @@
+// def skipRemainingStages = false
 pipeline {
     agent any
     parameters {
+        choice choices: ['Apply', 'Destroy'], name: 'Infrastruture'
         string defaultValue: 'Pramodr677', name: 'username'
         password defaultValue: '', name: 'password'
         choice choices: ['ubuntu', 'redhat'], name: 'operating_system'
@@ -24,12 +26,32 @@ pipeline {
                 sh 'terraform init'
             }
         }
+
+          stage('terraform destroy'){
+            when {
+                expression { params.Infrastruture == 'Destroy' }
+            }
+            steps {
+            //     script {
+            //         skipRemainingStages = true
+            //        input('Do you really want to destroy Infrastructure?')
+                 sh 'terraform destroy --auto-approve'
+            //     }
+            /}    
+        }
         stage('terraform apply'){
+             when {
+                expression { params.Infrastruture == 'Apply' }
+            }
             steps {
                 sh 'terraform apply --auto-approve  -var="ami=${AMI}" -var="instance_type=${instance_type}" -var="key_name=${key_name}" -var="node_count=${node_count}"'
             }
         }
         stage('terraform output'){
+
+            when {
+                expression { params.Infrastruture == 'Apply' }
+            }
             steps {
                 sh'''
                 chmod +x file.sh
@@ -38,6 +60,9 @@ pipeline {
             }
         }
         stage('Copy data'){
+            when {
+                expression { params.Infrastruture == 'Apply' }
+            }
             steps {
                 sh'''
                 IP=$(terraform output -json Bastion-publicIP | jq -s -r '.[]') 
@@ -49,6 +74,9 @@ pipeline {
             }
         }
         stage('Configure ansible'){
+            when {
+                expression { params.Infrastruture == 'Apply' }
+            }
             steps {
                 sh'''
                 IP=$(terraform output -json Bastion-publicIP | jq -s -r '.[]') 
@@ -58,6 +86,9 @@ pipeline {
             }
         }
         stage('Git clone'){
+            when {
+                expression { params.Infrastruture == 'Apply' }
+            }
             steps {
                 sh'''
                 IP=$(terraform output -json Bastion-publicIP | jq -s -r '.[]') 
@@ -68,6 +99,9 @@ pipeline {
             }
         }
         stage('nginx configure'){
+            when {
+                expression { params.Infrastruture == 'Apply' }
+            }
             steps {
                 sh'''
                 IP=$(terraform output -json Bastion-publicIP | jq -s -r '.[]') 
@@ -78,4 +112,3 @@ pipeline {
         }
     }    
 }
-
