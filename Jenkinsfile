@@ -37,7 +37,7 @@ pipeline {
             //        input('Do you really want to destroy Infrastructure?')
                  sh 'terraform destroy --auto-approve'
             //     }
-            /}    
+            }    
         }
         stage('terraform apply'){
              when {
