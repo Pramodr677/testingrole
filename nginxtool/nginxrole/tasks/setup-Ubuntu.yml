@@ -65,7 +65,7 @@
       notify:
        - reload nginx
        
-        - name: Copy nginx myapp configuration in place.
+    - name: Copy nginx myapp configuration in place.
       ansible.builtin.template:
         src: myapp.conf.j2
         dest: /etc/nginx/conf/myapp.conf 
