@@ -1,38 +1,38 @@
----
-    - name: download release
-      get_url:
-        url:  https://github.com/martin-helmich/prometheus-nginxlog-exporter/releases/download/v"{{ nginxlog_exporter_version }}"/prometheus-nginxlog-exporter_"{{ nginxlog_exporter_version }}"_linux_amd64.tar.gz
-        dest: "{{ nginxlog_exporter_dest }}"
-        owner: root
-        group: root
-        mode: 0755
+---      
+      
+      - name: download release
+        get_url:
+         url: https://github.com/martin-helmich/prometheus-nginxlog-exporter/releases/download/v{{ nginxlog_exporter_version }}/prometheus-nginxlog-exporter_{{ nginxlog_exporter_version }}_linux_amd64.tar.gz
+         dest: "{{ nginxlog_exporter_dest }}"
+         owner: root
+         group: "root"
+         mode: 0755
 
-#     - name: unpack archive
-#       unarchive:
-#         src: "{{ nginxlog_exporter_dest }}"/prometheus-nginxlog-exporter_"{{ nginxlog_exporter_version }}"_linux_amd64.tar.gz 
-#         dest: "{{ nginxlog_exporter_dest }}"
-#         remote_src: yes
-        
-#     - name: Configure connection Path/Module
-#       ansible.builtin.shell: sudo mv prometheus-nginxlog-exporter /usr/bin/prometheus-nginxlog-exporter
-#       args:
-#         chdir: "{{ nginxlog_exporter_dest }}"
-        
-#     - name: Copy a new "sudoers" file into place, after passing validation with visudo
-#       ansible.builtin.copy:
-#         src: nginxlog_exporter.yml 
-#         dest: "{{ nginxlog_exporter_dest_yml }}" 
-        
-#     - name: Copy a new "sudoers" file into place, after passing validation with visudo
-#       ansible.builtin.copy:
-#         src: /etc/ansible/nginxlog_exporter.service
-#         dest: "{{ nginxlog_exporter_dest_srvicefile }}"             
-#         #daemon_reload: yes
-        
-#     - name: Enabling and starting the Nginx Exporter service
-#       systemd:
-#         name: nginxlog_exporter
-#         daemon_reload: yes
-#         state: started
-#         enabled: yes  
- 
+      - name: unpack archive
+        unarchive:
+         src: "{{ nginxlog_exporter_dest }}/prometheus-nginxlog-exporter_{{ nginxlog_exporter_version }}_linux_amd64.tar.gz" 
+         dest: "{{ nginxlog_exporter_dest }}"
+         remote_src: yes   
+
+      - name: Configure connection Path/Module
+        ansible.builtin.shell: sudo mv prometheus-nginxlog-exporter /usr/bin/prometheus-nginxlog-exporter
+        args:
+          chdir: "{{ nginxlog_exporter_dest }}"  
+
+      - name: Copy a new "sudoers" yml file
+        ansible.builtin.template:
+         src: nginxlog_exporter.yml.j2 
+         dest: "{{ nginxlog_exporter_dest_yml }}"  
+
+      - name: Copy a new "sudoers" file service file
+        ansible.builtin.template:
+         src: nginxlog_exporter.service.j2
+         dest: "{{ nginxlog_exporter_dest_srvicefile }}"             
+         #daemon_reload: yes   
+         
+      - name: Enabling and starting the Nginx Exporter service
+        systemd:
+          name: nginxlog_exporter
+          daemon_reload: yes
+          state: started
+          enabled: yes     
