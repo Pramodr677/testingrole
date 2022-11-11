@@ -32,3 +32,8 @@ proxy_ip4: 10.0.13.64
  #######################################
 nginx_service_state: started
 nginx_service_enabled: true
+
+nginxlog_exporter_dest: /opt/
+nginxlog_exporter_version: 1.10.0
+nginxlog_exporter_dest_yml: /etc/prometheus/
+nginxlog_exporter_dest_srvicefile: /etc/systemd/system/
