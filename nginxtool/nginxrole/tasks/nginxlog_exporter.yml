@@ -1,7 +1,7 @@
 ---
     - name: download release
       get_url:
-        url:  https://github.com/martin-helmich/prometheus-nginxlog-exporter/releases/download/v{{nginxlog_exporter_version}}/prometheus-nginxlog-exporter_{{nginxlog_exporter_version}}_linux_amd64.tar.gz
+        url:  https://github.com/martin-helmich/prometheus-nginxlog-exporter/releases/download/v"{{ nginxlog_exporter_version }}"/prometheus-nginxlog-exporter_"{{ nginxlog_exporter_version }}"_linux_amd64.tar.gz
         dest: "{{ nginxlog_exporter_dest }}"
         owner: root
         group: root
