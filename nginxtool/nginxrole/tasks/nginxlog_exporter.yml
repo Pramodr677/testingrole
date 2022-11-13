@@ -19,20 +19,28 @@
         args:
           chdir: "{{ nginxlog_exporter_dest }}"  
 
-      - name: Copy a new "sudoers" yml file
+      - name: Create Folder
+        file: 
+         path: "{{ nginxlog_exporter_dest_yml }}"
+         recurse: yes
+         state: directory
+
+      - name: Copy a new exporter yml file
         ansible.builtin.template:
          src: nginxlog_exporter.yml.j2 
          dest: "{{ nginxlog_exporter_dest_yml }}"  
 
-      - name: Copy a new "sudoers" file service file
+
+      - name: Copy a new  service file
         ansible.builtin.template:
          src: nginxlog_exporter.service.j2
          dest: "{{ nginxlog_exporter_dest_srvicefile }}"             
-         #daemon_reload: yes   
+          
          
       - name: Enabling and starting the Nginx Exporter service
         systemd:
-          name: nginxlog_exporter
-          daemon_reload: yes
-          state: started
-          enabled: yes     
+         name: nginxlog_exporter
+         daemon_reload: yes
+         state: started
+         enabled: yes     
+         
