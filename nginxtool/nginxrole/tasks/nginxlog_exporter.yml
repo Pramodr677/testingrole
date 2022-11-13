@@ -29,6 +29,12 @@
         ansible.builtin.template:
          src: nginxlog_exporter.yml.j2 
          dest: "{{ nginxlog_exporter_dest_yml }}"  
+         
+      - name: Create Folder
+        file: 
+         path: "{{ nginxlog_exporter_dest_srvicefile }}"
+         recurse: yes
+         state: directory
 
 
       - name: Copy a new  service file
