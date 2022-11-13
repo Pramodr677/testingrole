@@ -33,7 +33,7 @@
 
       - name: Copy a new  service file
         ansible.builtin.template:
-         src: nginxlog_exporter.service.j2
+         src:  nginxlog_exporter.service.j2 
          dest: "{{ nginxlog_exporter_dest_srvicefile }}"             
           
          
