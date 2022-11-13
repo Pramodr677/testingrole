@@ -27,7 +27,7 @@
 
       - name: Copy a new exporter yml file
         ansible.builtin.template:
-         src: nginxlog_exporter.yml.j2 
+         src: nginxlog_exporter.yml
          dest: "{{ nginxlog_exporter_dest_yml }}"  
          
       - name: Create Folder
@@ -39,7 +39,7 @@
 
       - name: Copy a new  service file
         ansible.builtin.template:
-         src:  nginxlog_exporter.service.j2 
+         src:  nginxlog_exporter.service
          dest: "{{ nginxlog_exporter_dest_srvicefile }}"             
           
          
