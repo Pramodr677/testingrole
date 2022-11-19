@@ -61,7 +61,7 @@
         owner: root
         group: root
         mode: 0644
-      when: inventory_hostname=="node1"    
+      when: inventory_hostname=="node1" && "node2"    
       notify:
        - reload nginx
        
@@ -72,7 +72,7 @@
         owner: root
         group: root
         mode: 0644
-      when: inventory_hostname=="node1"    
+      when: inventory_hostname=="node1" && "node2"   
       notify:
        - reload nginx
 ###################################################
@@ -84,7 +84,7 @@
         owner: root
         group: root
         mode: 0644
-      when: inventory_hostname=="node2"  
+      when: inventory_hostname=="node3"  
       notify:
        - reload nginx
 # ############################################
@@ -96,7 +96,7 @@
         owner: root
         group: root
         mode: 0644
-      when: inventory_hostname=="node3"  
+      when: inventory_hostname=="node4"  
       notify:
        - reload nginx
 
@@ -109,7 +109,7 @@
         dest: /etc/nginx/html/index.html
         owner: root
         group: root
-      when: inventory_hostname=="node2"
+      when: inventory_hostname=="node3"
 
     - name: Copy nginx index.html in place.
       ansible.builtin.template:
@@ -117,5 +117,5 @@
         dest: /etc/nginx/html/index.html
         owner: root
         group: root
-      when: inventory_hostname=="node3"    
+      when: inventory_hostname=="node4"    
 
