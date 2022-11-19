@@ -1,6 +1,9 @@
 variable "subnet_id_public_1" {
   default = {}
 }
+variable "subnet_id_public_2" {
+  default = {}
+}
 
 variable "subnet_id_private_1" {
   default = {}
