@@ -31,7 +31,7 @@ resource "aws_instance" "nginx_client2" {
   instance_type               = var.instance_type
   associate_public_ip_address = true
   availability_zone           = var.AZ2
-  subnet_id                   = var.subnet_id_public_1
+  subnet_id                   = var.subnet_id_public_2
   key_name                    = var.key_name
   vpc_security_group_ids      = [var.security_id_nginxclient]
   #count                      = var.public_node_count
