@@ -23,6 +23,7 @@ rm datafile
 touch datafile
 echo "" > datafile
 IP=$(terraform output -json publicIP | jq -s -r '.[]') 
+IP=$(terraform output -json publicIP2 | jq -s -r '.[]') 
 echo $IP >> datafile
 cat datafile
 echo "[public]" >> Invnetory
