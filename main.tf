@@ -53,6 +53,7 @@ module "ec2" {
   source               = "./modules/ec2"
   ami                  = var.ami
   AZ1                  = var.AZ1
+  AZ2                  = var.AZ2
   instance_type        = var.instance_type
   subnet_id_public_1   = module.subnet.subnet_id_public_1
   subnet_id_private_1  = module.subnet.subnet_id_private_1
@@ -62,5 +63,6 @@ module "ec2" {
   node_count           = var.node_count
   tags_ec2_pub         = var.tags_ec2_pub
   tags_ec2_pub2         = var.tags_ec2_pub2
+  tags_ec2_pub3         = var.tags_ec2_pub3
   tags_ec2_priv        = var.tags_ec2_priv
 }
