@@ -17,7 +17,11 @@ variable "security_id_nginxnodes" {
 variable "AZ1" {
   default = "us-west-2a"
 }
-
+###
+variable "AZ2" {
+  default = "us-west-2b"
+}
+##
 variable "ami" {
   default = "ami-08c40ec9ead489470"
 }
@@ -37,7 +41,9 @@ variable "tags_ec2_pub" {
 variable "tags_ec2_pub2" {
   default = {}
 }
-
+variable "tags_ec2_pub3" {
+  default = {}
+}
 
 variable "tags_ec2_priv" {
   default = {}
