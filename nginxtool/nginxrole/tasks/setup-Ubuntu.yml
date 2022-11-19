@@ -76,7 +76,7 @@
       notify:
        - reload nginx
 ###################################################
-- name: Copy nginx configuration in place passive.
+    - name: Copy nginx configuration in place passive.
       ansible.builtin.template:
         src: nginx_conf.j2
         dest: /etc/nginx/conf/nginx.conf
