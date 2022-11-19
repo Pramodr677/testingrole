@@ -93,3 +93,7 @@ variable "node_count" {
 variable "tags_ec2_pub2" {
   default = {}
 }
+
+variable "tags_ec2_pub3" {
+  default = {}
+}
