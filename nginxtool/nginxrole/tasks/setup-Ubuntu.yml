@@ -61,7 +61,7 @@
         owner: root
         group: root
         mode: 0644
-      when: inventory_hostname=="node1" && "node2"    
+      when: inventory_hostname=="node1" 
       notify:
        - reload nginx
        
@@ -72,10 +72,34 @@
         owner: root
         group: root
         mode: 0644
-      when: inventory_hostname=="node1" && "node2"   
+      when: inventory_hostname=="node1"  
       notify:
        - reload nginx
 ###################################################
+- name: Copy nginx configuration in place passive.
+      ansible.builtin.template:
+        src: nginx_conf.j2
+        dest: /etc/nginx/conf/nginx.conf
+        owner: root
+        group: root
+        mode: 0644
+      when: inventory_hostname=="node2" 
+      notify:
+       - reload nginx
+       
+    - name: Copy nginx myapp configuration in place passive.
+      ansible.builtin.template:
+        src: myapp.conf.j2
+        dest: /etc/nginx/conf/myapp.conf 
+        owner: root
+        group: root
+        mode: 0644
+      when: inventory_hostname=="node2"  
+      notify:
+       - reload nginx
+
+
+###################
 
     - name: Copy nginx configuration in place.
       ansible.builtin.template:
