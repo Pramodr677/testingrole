@@ -59,6 +59,13 @@ tags_ec2_pub2 = {
   Owner = "pramod"
   Category = "public"
 }
+##
+tags_ec2_pub3 = {
+  Name  = "nginx-publicpassive"
+  Type  = "webserver"
+  Owner = "pramod"
+  Category = "public"
+}
 
 tags_ec2_priv = {
   Name  = "nginx-nodes"
