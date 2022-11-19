@@ -45,7 +45,11 @@ output "Bastion-publicIP" {
 output "publicIP" {
   value = module.ec2.Intance_public_ip2
 }
-
+  ###
+output "publicIP2" {
+  value = module.ec2.Intance_public_ip3
+}
+  
 output "nginx-nodes-privateIP" {
   value = module.ec2.Instance_ips
 }
