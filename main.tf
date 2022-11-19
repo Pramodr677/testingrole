@@ -56,6 +56,7 @@ module "ec2" {
   AZ2                  = var.AZ2
   instance_type        = var.instance_type
   subnet_id_public_1   = module.subnet.subnet_id_public_1
+  subnet_id_public_2   = module.subnet.subnet_id_public_2
   subnet_id_private_1  = module.subnet.subnet_id_private_1
   key_name             = var.key_name
   security_id_nginxclient = module.sg.security_id_nginxclient
