@@ -10,7 +10,7 @@ nginx_default_release: "nginx-1.16.0"
 #nginx_pidfile: "/run/nginx.pid"
 nginx_error_log: "/var/log/nginx/error.log"
 nginx_worker_processes:  "auto"
-nginx_worker_connections: 183
+nginx_worker_connections: 512
 nginx_access_log: "/var/log/nginx/access.log"
 nginx_sendfile: "on"
 nginx_tcp_nopush: "on"
@@ -22,10 +22,6 @@ reverseproxy_servername1: www.akasht1.com
 reverseproxy_servername2: www.hemats1.com
 reverseproxy_servername3: www.akasht11.com
 reverseproxy_servername4: www.hemats11.com
-proxy_ip1: 10.0.13.124
-proxy_ip2: 10.0.13.64
-proxy_ip3: 10.0.13.124
-proxy_ip4: 10.0.13.64
 
 
 
