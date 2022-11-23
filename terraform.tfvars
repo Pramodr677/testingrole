@@ -1,4 +1,4 @@
-region           = "us-west-1"
+region           = "us-east-1"
 vpc_cidr         = "10.0.0.0/16"
 instance_tenancy = "default"
 tags_vpc = {
@@ -15,8 +15,8 @@ subnet_cidr_1 = "10.0.0.0/18"
 subnet_cidr_2 = "10.0.64.0/18"
 subnet_cidr_3 = "10.0.128.0/18"
 subnet_cidr_4 = "10.0.192.0/18"
-AZ1           = "us-west-1a"
-AZ2           = "us-west-1b"
+AZ1           = "us-east-1a"
+AZ2           = "us-east-1b"
 tags_subnet_pub = {
   Name  = "nginx_subnet_pub"
   Type  = "webserver"
