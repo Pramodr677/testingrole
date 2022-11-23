@@ -1,7 +1,7 @@
 Nginx Setup
 =========
 
-This role is to install cassandra and setup cluster
+This role is to install Nginx and perform reverse proxy ,load balancing
 
 Requirements
 ------------
