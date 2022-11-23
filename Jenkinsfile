@@ -8,11 +8,11 @@ pipeline {
         choice choices: ['ubuntu', 'redhat'], name: 'operating_system'
         choice choices: ['ami-02ea247e531eb3ce6', 'ami-062df10d14676e201'], name: 'AMI'
         string defaultValue: 't2.medium', description: 'Input instance type', name: 'instance_type'
-        string defaultValue: 'caliritik', description: 'Input key pair name which you want to provide to your machine & ensure it will be pre-generated', name: 'key_name'
+        string defaultValue: 'mumbairitik', description: 'Input key pair name which you want to provide to your machine & ensure it will be pre-generated', name: 'key_name'
         string defaultValue: '3', description: 'Input node count for your reverse proxy and load balancing', name: 'node_count'
         string defaultValue: 'ubuntu', description: 'Specify the user of your ec2 instances [ubuntu for ubuntu and ec2-user for redhat]', name: 'VM_USER', trim: true
         choice choices: ['apt', 'yum'], description: 'Select package manager i.e. in case of ubuntu -> apt and in redhat -> yum', name: 'Package_manager'
-        string defaultValue: 'caliritik.pem', description: 'Specify the key pair name of your VM in .pem ext format [for e.g abc.pem]', name: 'Key_pair_name', trim: true
+        string defaultValue: 'mumbairitik.pem', description: 'Specify the key pair name of your VM in .pem ext format [for e.g abc.pem]', name: 'Key_pair_name', trim: true
         choice choices: ['1.16.0', '1.18.0', '1.20.0', '1.22.0'], description: 'Select your nginx version', name: 'version'
     }
     stages {
