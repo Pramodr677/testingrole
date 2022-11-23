@@ -6,7 +6,7 @@ pipeline {
         string defaultValue: 'Pramodr677', name: 'username'
         password defaultValue: '', name: 'password'
         choice choices: ['ubuntu', 'redhat'], name: 'operating_system'
-        choice choices: ['ami-02ea247e531eb3ce6', 'ami-029465c1f346dd34f'], name: 'AMI'
+        choice choices: ['ami-02ea247e531eb3ce6', 'ami-029465c1f346dd34f','ami-062df10d14676e201'], name: 'AMI'
         string defaultValue: 't2.medium', description: 'Input instance type', name: 'instance_type'
         string defaultValue: 'caliritik', description: 'Input key pair name which you want to provide to your machine & ensure it will be pre-generated', name: 'key_name'
         string defaultValue: '3', description: 'Input node count for your reverse proxy and load balancing', name: 'node_count'
