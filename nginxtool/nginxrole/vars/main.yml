@@ -1,7 +1,7 @@
 ---
 # Nginx Instalation from source code installation during task.
 
-nginx_default_release: "nginx-1.16.0"
+version: "nginx-1.16.0"
 
 
 
