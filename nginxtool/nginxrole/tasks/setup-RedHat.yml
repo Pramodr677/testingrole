@@ -22,24 +22,24 @@
          
     - name: Download/unzip nginx
       ansible.builtin.unarchive:
-         src: https://nginx.org/download/{{ nginx_default_release }}.tar.gz 
+         src: https://nginx.org/download/{{ version }}.tar.gz 
          dest: /opt
          remote_src: yes
 
     - name: Configure connection Path/Module
       ansible.builtin.shell:  sudo ./configure --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --error-log-path=/var/log/nginx/error.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --user=root --group=root
       args:
-         chdir: /opt/{{ nginx_default_release }}
+         chdir: /opt/{{ version }}
   
     - name: make comand
       ansible.builtin.shell: sudo make
       args:
-         chdir: /opt/{{ nginx_default_release }}
+         chdir: /opt/{{ version }}
 
     - name: install make comand
       ansible.builtin.shell: sudo make install
       args:
-         chdir: /opt/{{ nginx_default_release }}
+         chdir: /opt/{{ version }}
 
     - name: Copy nginx servicefile in place
       ansible.builtin.template:
