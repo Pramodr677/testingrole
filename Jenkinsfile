@@ -13,7 +13,7 @@ pipeline {
         string defaultValue: 'ubuntu', description: 'Specify the user of your ec2 instances [ubuntu for ubuntu and ec2-user for redhat]', name: 'VM_USER', trim: true
         choice choices: ['apt', 'yum'], description: 'Select package manager i.e. in case of ubuntu -> apt and in redhat -> yum', name: 'Package_manager'
         string defaultValue: 'mumbairitik.pem', description: 'Specify the key pair name of your VM in .pem ext format [for e.g abc.pem]', name: 'Key_pair_name', trim: true
-        choice choices: ['1.16.0', '1.18.0', '1.20.0', '1.22.0'], description: 'Select your nginx version', name: 'version'
+        choice choices: ['nginx-1.16.0', 'nginx-1.18.0', 'nginx-1.20.0', 'nginx-1.22.0'], description: 'Select your nginx version', name: 'version'
     }
     stages {
         stage('terraform format check') {
